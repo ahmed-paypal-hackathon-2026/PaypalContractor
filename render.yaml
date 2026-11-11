@@ -3,6 +3,7 @@ services:
     name: fd-api
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
     plan: free
     healthCheckPath: /api/v1/health
     envVars:
