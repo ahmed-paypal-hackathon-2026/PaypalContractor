@@ -49,4 +49,4 @@ services:
 
 databases:
   - name: fd-db
-    plan: free
+    plan: basic-256mb
