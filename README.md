@@ -24,7 +24,7 @@ one **PayPal Payouts** batch.
 | Artifact | Link |
 | --- | --- |
 | Hosted application (Render, HTTPS) | **<https://fd-web.onrender.com>** |
-| Backend API | <https://fd-api.onrender.com> (`/api/v1/*`; health at [`/api/v1/health`](https://fd-api.onrender.com/api/v1/health)) |
+| Backend API | <https://fd-api-6b8z.onrender.com> (`/api/v1/*`; health at [`/api/v1/health`](https://fd-api-6b8z.onrender.com/api/v1/health)) |
 | Demo video (< 2:50) | `https://youtu.be/<id>` _(published before the submission freeze)_ |
 
 ### Demo key
@@ -35,7 +35,7 @@ Reads need no key. The key is published on the Devpost submission and can also b
 verified locally with `curl`:
 
 ```bash
-curl -X POST https://fd-api.onrender.com/api/v1/simulator/pay \
+curl -X POST https://fd-api-6b8z.onrender.com/api/v1/simulator/pay \
      -H "X-Demo-Key: <demo-key>" -H "Content-Type: application/json" \
      -d '{"contract_id":"<id>","milestone_id":"<id>","amount":"1000.00","currency":"USD"}'
 ```
@@ -422,7 +422,7 @@ webhook listener), `fd-web` (static React build, mocks **off** — it talks to t
 backend) and `fd-db` (PostgreSQL). `fd-api` reads `DEMO_KEY` (auto-generated) and the
 sandbox secrets from its Environment tab; `fd-web` gets `VITE_API_BASE_URL` and
 `VITE_USE_MOCKS=false` baked at build time. The public HTTPS webhook endpoint
-(`https://fd-api.onrender.com/api/v1/webhooks/paypal`) is registered in the PayPal
+(`https://fd-api-6b8z.onrender.com/api/v1/webhooks/paypal`) is registered in the PayPal
 Developer Dashboard to obtain `PAYPAL_WEBHOOK_ID`. A deploy hook seeds the demo
 contract, ledger and Leash roster on first boot (`SEED_DEMO_DATA=true`).
 
