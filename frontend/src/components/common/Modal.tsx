@@ -35,7 +35,7 @@ export function Modal({ open, title, subtitle, onClose, children, footer, width 
   if (!open) return null;
   const w = width === "sm" ? "max-w-md" : width === "lg" ? "max-w-3xl" : "max-w-xl";
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-[#16302F]/45 p-0 sm:items-center sm:p-6" onMouseDown={onClose}>
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-[#0F1733]/45 p-0 sm:items-center sm:p-6" onMouseDown={onClose}>
       <div
         ref={panel}
         role="dialog"

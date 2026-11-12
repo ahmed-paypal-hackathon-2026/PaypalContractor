@@ -89,7 +89,7 @@ export function SimulationResult({ res, row }: { res: SimulatorPaymentResponse; 
       ) : res.discrepancy_id ? (
         <Link
           to={`/ledger?discrepancy=${encodeURIComponent(res.discrepancy_id)}`}
-          className="inline-flex h-9 items-center rounded border border-ink bg-ink px-3 text-[14px] font-medium text-white hover:bg-brand-dark"
+          className="inline-flex h-9 items-center rounded border border-brand bg-brand px-3 text-[14px] font-medium text-white hover:bg-brand-dark"
         >
           {res.leash?.decision === "DENY" ? "See why in the ledger" : "Review the invoice"}
         </Link>

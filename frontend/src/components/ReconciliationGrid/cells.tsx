@@ -142,8 +142,8 @@ export function ActionCell({ data, context }: P) {
     <button
       type="button"
       onClick={() => context.openRemediation(id)}
-      className={`h-8 whitespace-nowrap rounded border px-3 text-[13px] font-medium transition-colors ${
-        primary ? "border-ink bg-ink text-white hover:bg-brand-dark" : "border-transparent text-ink underline decoration-paper-line underline-offset-4 hover:decoration-ink"
+      className={`inline-flex h-8 items-center whitespace-nowrap rounded-full border px-3.5 text-[13px] font-semibold leading-none transition-colors ${
+        primary ? "border-brand bg-brand text-white hover:bg-brand-dark" : "border-transparent text-ink underline decoration-paper-line underline-offset-4 hover:decoration-ink"
       }`}
     >
       {label}

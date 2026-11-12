@@ -200,19 +200,19 @@ export function ReconciliationGrid({ rows, margin, loading, onOpenRemediation }:
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
-        <div className="flex flex-wrap items-stretch gap-x-5 gap-y-1 border-b border-paper-line" role="group" aria-label="Filter by status">
+        <div className="flex flex-wrap items-center gap-1.5" role="group" aria-label="Filter by status">
           {FILTERS.map((f) => (
             <button
               key={f.id}
               type="button"
               aria-pressed={status === f.id}
               onClick={() => setStatus(f.id)}
-              className={`-mb-px flex items-baseline gap-1.5 border-b-2 pb-2 text-[14px] transition-colors ${
-                status === f.id ? "border-ink font-medium text-ink" : "border-transparent text-ink-muted hover:text-ink"
+              className={`flex items-baseline gap-1.5 rounded-full px-3.5 py-2 text-[13.5px] font-medium transition-colors ${
+                status === f.id ? "bg-ink text-white" : "bg-white text-ink-soft shadow-card hover:text-ink"
               }`}
             >
               {f.label}
-              <span className="num text-[12px] text-ink-muted">{counts[f.id]}</span>
+              <span className="num text-[12px] opacity-60">{counts[f.id]}</span>
             </button>
           ))}
         </div>
@@ -226,7 +226,7 @@ export function ReconciliationGrid({ rows, margin, loading, onOpenRemediation }:
             value={quick}
             onChange={(e) => setQuick(e.target.value)}
             placeholder="Find a client, milestone or capture"
-            className="h-9 w-full rounded border border-paper-line bg-white pl-9 pr-3 text-[14px] outline-none placeholder:text-ink-muted focus:border-ink"
+            className="h-10 w-full rounded-full border border-transparent bg-white pl-9 pr-4 shadow-card text-[14px] outline-none placeholder:text-ink-muted focus:border-brand"
           />
         </label>
       </div>

@@ -4,22 +4,27 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["'IBM Plex Sans'", "ui-sans-serif", "system-ui", "sans-serif"],
-        cond: ["'IBM Plex Sans Condensed'", "'IBM Plex Sans'", "sans-serif"],
+        sans: ["'Plus Jakarta Sans'", "ui-sans-serif", "system-ui", "sans-serif"],
+        cond: ["'Plus Jakarta Sans'", "ui-sans-serif", "sans-serif"],
       },
       colors: {
-        // An auditor's working file: petrol ink on cool paper, red for money owed,
-        // and a highlighter used only where a clause or an amount is being called out.
-        ink: { DEFAULT: "#16302F", soft: "#3E5654", muted: "#6B7F7C" },
-        paper: { DEFAULT: "#F2F4F3", card: "#FFFFFF", line: "#D9DEDC", rule: "#E8ECEA" },
-        brand: { DEFAULT: "#16302F", dark: "#0E2221", soft: "#E3ECEA" },
-        good: { DEFAULT: "#2E6B4F", soft: "#E4F0EA" },
-        warn: { DEFAULT: "#8A5A00", soft: "#FBF1DA" },
-        bad: { DEFAULT: "#B3261E", soft: "#FBE9E7" },
-        hl: { DEFAULT: "#F3DF6B", soft: "#FBF3C4" },
+        // A banking app: navy ink on a soft grey page, one royal blue for money and actions,
+        // red only for money owed. The token names stay the same so every page follows.
+        ink: { DEFAULT: "#0F1733", soft: "#3D4562", muted: "#7A8099" },
+        paper: { DEFAULT: "#F4F5F9", card: "#FFFFFF", line: "#E3E6EF", rule: "#EEF0F6" },
+        brand: { DEFAULT: "#2F55EB", dark: "#2245CF", soft: "#EDF1FE", mid: "#5C7BF0", pale: "#C9D4FB" },
+        good: { DEFAULT: "#1E7A4A", soft: "#E3F5EB" },
+        warn: { DEFAULT: "#8A5A00", soft: "#FDF3DC" },
+        bad: { DEFAULT: "#D63A3A", soft: "#FDECEC" },
+        hl: { DEFAULT: "#C9D4FB", soft: "#EDF1FE" },
       },
-      borderRadius: { DEFAULT: "4px", md: "5px", lg: "6px", xl: "8px", "2xl": "10px" },
-      boxShadow: { card: "none", pop: "0 12px 32px rgba(22,48,47,.18)" },
+      borderRadius: { DEFAULT: "10px", md: "12px", lg: "16px", xl: "20px", "2xl": "24px", "3xl": "28px" },
+      boxShadow: {
+        card: "0 1px 2px rgba(15,23,51,.04)",
+        pop: "0 20px 48px rgba(15,23,51,.16)",
+        float: "0 12px 32px rgba(15,23,51,.12)",
+        blue: "0 16px 32px rgba(47,85,235,.28)",
+      },
     },
   },
   plugins: [],
