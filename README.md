@@ -31,12 +31,18 @@ one **PayPal Payouts** batch.
 
 Every write in the app (upload a contract, simulate a payment, approve a remediation,
 send payroll) asks for the **demo key**, which is sent as an `X-Demo-Key` header.
-Reads need no key. The key is published on the Devpost submission and can also be
-verified locally with `curl`:
+Reads need no key. This is a public demo unlock code, deliberately shared (also on
+the Devpost submission):
+
+```
+c7k73hEAEA2Bf/3la6g6mYso4jWkVVwDN6Sga12FJjU=
+```
+
+You can verify the write path with `curl`:
 
 ```bash
 curl -X POST https://fd-api-6b8z.onrender.com/api/v1/simulator/pay \
-     -H "X-Demo-Key: <demo-key>" -H "Content-Type: application/json" \
+     -H "X-Demo-Key: c7k73hEAEA2Bf/3la6g6mYso4jWkVVwDN6Sga12FJjU=" -H "Content-Type: application/json" \
      -d '{"contract_id":"<id>","milestone_id":"<id>","amount":"1000.00","currency":"USD"}'
 ```
 

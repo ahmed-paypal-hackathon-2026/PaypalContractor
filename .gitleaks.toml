@@ -1,0 +1,12 @@
+# gitleaks configuration (CI gate 3: zero leaked secrets).
+# The demo unlock key is deliberately public — it is printed in the README for
+# judges and on the Devpost submission, so it must not be flagged as a leak.
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Public demo unlock key (published in README/Devpost by design)"
+regexes = [
+  '''c7k73hEAEA2Bf/3la6g6mYso4jWkVVwDN6Sga12FJjU=''',
+]
