@@ -88,6 +88,26 @@ class GeminiModel:
             raise EmptyModelResponse(f"{self.name} returned an empty response")
         return schema.model_validate_json(response.text)
 
+    async def generate_text(self, system_prompt: str, user_prompt: str) -> str:
+        """Plain-text completion without a schema; the caller's wait_for is the deadline."""
+        from google import genai
+        from google.genai import types
+
+        client = genai.Client(api_key=self._api_key)
+        response = await client.aio.models.generate_content(
+            model=self.model,
+            contents=user_prompt,
+            config=types.GenerateContentConfig(
+                system_instruction=system_prompt,
+                temperature=0.2,
+                thinking_config=types.ThinkingConfig(thinking_budget=0),
+                max_output_tokens=120,
+            ),
+        )
+        if not response.text:
+            raise EmptyModelResponse(f"{self.name} returned an empty response")
+        return response.text
+
     async def generate_tool_calls(
         self,
         system_prompt: str,
