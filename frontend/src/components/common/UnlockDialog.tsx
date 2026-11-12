@@ -44,7 +44,7 @@ export function UnlockDialog({ open, onClose }: { open: boolean; onClose: () => 
             autoComplete="off"
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            className="mt-1.5 w-full rounded border border-paper-line px-3 py-2 text-[14px] outline-none focus:border-ink"
+            className="mt-1.5 w-full rounded border border-paper-line px-3 py-2 text-[14px] outline-none focus:border-brand"
             placeholder="It is in the README and the Devpost testing notes"
           />
         </label>

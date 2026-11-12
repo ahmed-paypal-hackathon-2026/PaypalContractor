@@ -13,7 +13,7 @@ interface Props {
 }
 
 const inputCls =
-  "w-full rounded border px-3 py-2 text-sm text-ink outline-none transition focus:border-ink disabled:bg-paper disabled:text-ink-soft";
+  "w-full rounded border px-3 py-2 text-sm text-ink outline-none transition focus:border-brand disabled:bg-paper disabled:text-ink-soft";
 
 function Field({
   label,

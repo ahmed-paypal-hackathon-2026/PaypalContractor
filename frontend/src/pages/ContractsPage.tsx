@@ -14,7 +14,7 @@ export default function ContractsPage() {
         title="Contracts"
         description="Contracts you have reviewed in this tab. Active contracts from the server show up in the ledger."
         actions={
-          <Link to="/contracts/new" className="inline-flex h-10 items-center rounded border border-ink bg-ink px-4 text-[14px] font-medium text-white hover:bg-brand-dark">
+          <Link to="/contracts/new" className="inline-flex h-10 items-center rounded border border-brand bg-brand px-4 text-[14px] font-medium text-white hover:bg-brand-dark">
             Add a contract
           </Link>
         }

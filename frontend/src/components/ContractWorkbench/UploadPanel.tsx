@@ -58,7 +58,7 @@ export function UploadPanel({ busy, error, onSubmit, samples = [] }: Props) {
             role="tab"
             aria-selected={mode === m}
             onClick={() => setMode(m)}
-            className={`-mb-px border-b-2 pb-2 transition-colors ${mode === m ? "border-ink font-medium text-ink" : "border-transparent text-ink-muted hover:text-ink"}`}
+            className={`-mb-px border-b-2 pb-2 transition-colors ${mode === m ? "border-brand font-medium text-ink" : "border-transparent text-ink-muted hover:text-ink"}`}
           >
             {m === "file" ? "Upload file" : "Paste text"}
           </button>
@@ -117,7 +117,7 @@ export function UploadPanel({ busy, error, onSubmit, samples = [] }: Props) {
             onChange={(e) => setText(e.target.value)}
             rows={9}
             placeholder="Paste the contract text…"
-            className="w-full rounded border border-paper-line p-3 text-[13px] leading-relaxed outline-none focus:border-ink"
+            className="w-full rounded border border-paper-line p-3 text-[13px] leading-relaxed outline-none focus:border-brand"
           />
           <div className="flex justify-end">
             <Button disabled={busy || !text.trim()} onClick={() => onSubmit({ rawText: text })}>

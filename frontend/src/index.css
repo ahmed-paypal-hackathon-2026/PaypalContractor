@@ -1,8 +1,8 @@
-@import "@fontsource/ibm-plex-sans/400.css";
-@import "@fontsource/ibm-plex-sans/500.css";
-@import "@fontsource/ibm-plex-sans/600.css";
-@import "@fontsource/ibm-plex-sans/400-italic.css";
-@import "@fontsource/ibm-plex-sans-condensed/500.css";
+@import "@fontsource/plus-jakarta-sans/400.css";
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/600.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/plus-jakarta-sans/400-italic.css";
 
 @tailwind base;
 @tailwind components;
@@ -10,7 +10,7 @@
 
 :root {
   color-scheme: light;
-  font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -29,13 +29,13 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid #16302f;
+  outline: 2px solid #2f55eb;
   outline-offset: 2px;
 }
 
-/* Highlighter: the only decorative mark, used for cited clauses and money owed. */
+/* Highlighter in soft blue: used for cited clauses and money owed. */
 .hl {
-  background: linear-gradient(transparent 12%, #f3df6b 12%, #f3df6b 88%, transparent 88%);
+  background: linear-gradient(transparent 12%, #c9d4fb 12%, #c9d4fb 88%, transparent 88%);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   padding: 0 0.15em;
@@ -43,7 +43,7 @@ body {
 
 /* Clauses get a lighter wash so the amount owed stays the strongest mark. */
 .hl-soft {
-  background: linear-gradient(transparent 8%, #fbf3c4 8%, #fbf3c4 92%, transparent 92%);
+  background: linear-gradient(transparent 8%, #edf1fe 8%, #edf1fe 92%, transparent 92%);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   padding: 0 0.12em;
@@ -58,38 +58,42 @@ body {
   }
 }
 
-/* AG Grid Community, Quartz theme, tuned to the working-file palette. */
+/* AG Grid Community, Quartz theme, tuned to the banking palette: white card, soft rows, blue focus. */
 .ag-theme-quartz.fd-grid {
-  --ag-font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --ag-font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --ag-font-size: 13.5px;
-  --ag-foreground-color: #16302f;
-  --ag-secondary-foreground-color: #3e5654;
-  --ag-header-foreground-color: #3e5654;
+  --ag-foreground-color: #0f1733;
+  --ag-secondary-foreground-color: #3d4562;
+  --ag-header-foreground-color: #7a8099;
   --ag-header-background-color: #ffffff;
   --ag-background-color: #ffffff;
   --ag-odd-row-background-color: #ffffff;
-  --ag-row-hover-color: #f6f8f7;
-  --ag-selected-row-background-color: #e3ecea;
-  --ag-border-color: #d9dedc;
-  --ag-row-border-color: #e8ecea;
+  --ag-row-hover-color: #f7f8fc;
+  --ag-selected-row-background-color: #edf1fe;
+  --ag-border-color: transparent;
+  --ag-row-border-color: #eef0f6;
   --ag-header-column-separator-display: none;
-  --ag-active-color: #16302f;
-  --ag-input-focus-border-color: #16302f;
-  --ag-wrapper-border-radius: 6px;
-  --ag-border-radius: 4px;
-  --ag-cell-horizontal-padding: 14px;
+  --ag-active-color: #2f55eb;
+  --ag-input-focus-border-color: #2f55eb;
+  --ag-wrapper-border-radius: 20px;
+  --ag-border-radius: 10px;
+  --ag-cell-horizontal-padding: 16px;
   --ag-grid-size: 7px;
+  --ag-row-height: 60px;
+}
+
+.fd-grid .ag-root-wrapper {
+  box-shadow: 0 1px 2px rgba(15, 23, 51, 0.04);
 }
 
 .fd-grid .ag-header {
-  border-bottom: 1px solid #16302f;
+  border-bottom: 1px solid #eef0f6;
 }
 
 .fd-grid .ag-header-cell-label {
-  font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
   font-weight: 500;
-  font-size: 13px;
-  color: #3e5654;
+  font-size: 12.5px;
+  color: #7a8099;
 }
 
 .fd-grid .num {
@@ -97,26 +101,25 @@ body {
   font-feature-settings: "tnum" 1, "lnum" 1;
 }
 
-/* The totals line reads like the foot of a ledger page: a double rule above it. */
+/* The totals line sits on a soft blue band. */
 .fd-grid .ag-floating-bottom {
-  border-top: 3px double #16302f;
+  border-top: 1px solid #e3e6ef;
 }
 
 .fd-grid .ag-row-pinned {
-  font-weight: 600;
-  background: #ffffff;
+  font-weight: 700;
+  background: #f7f8fc;
 }
 
-/* A red mark in the margin beside rows that need the owner. */
+/* A red mark beside rows that need the owner. */
 .fd-grid .fd-flag {
-  box-shadow: inset 3px 0 0 #b3261e;
+  box-shadow: inset 3px 0 0 #d63a3a;
 }
 
 .fd-grid .fd-detail-row {
-  background: #f6f8f7;
+  background: #f7f8fc;
 }
 
-/* Wrapped cells read like normal text, not like one 37px-tall line each. */
 .fd-grid .ag-cell-auto-height,
 .fd-grid .ag-cell-wrap-text {
   line-height: 1.4;
@@ -124,8 +127,32 @@ body {
   padding-bottom: 8px;
 }
 
-/* Chips and badges line up with the text in the same row. */
 .fd-grid .ag-cell {
   display: flex;
   align-items: center;
+}
+
+/* The stacked-card look behind the balance card. */
+.fd-stack {
+  position: relative;
+  isolation: isolate;
+}
+.fd-stack::before,
+.fd-stack::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: -14px;
+  height: 40px;
+  border-radius: 24px 24px 0 0;
+  background: #c9d4fb;
+  z-index: -2;
+}
+.fd-stack::after {
+  left: 4%;
+  right: 4%;
+  top: -7px;
+  background: #5c7bf0;
+  z-index: -1;
 }

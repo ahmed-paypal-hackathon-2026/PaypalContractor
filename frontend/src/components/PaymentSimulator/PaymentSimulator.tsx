@@ -15,7 +15,7 @@ interface Props {
   initialMilestoneId?: string | null;
 }
 
-const inputCls = "w-full rounded border border-paper-line bg-white px-3 py-2 text-[14px] outline-none focus:border-ink";
+const inputCls = "w-full rounded border border-paper-line bg-white px-3 py-2 text-[14px] outline-none focus:border-brand";
 
 /** Client Payment Simulator (plan WP-3.3, REQ-FE-03): run a real sandbox order + capture. */
 export function PaymentSimulator({ rows, initialMilestoneId }: Props) {
