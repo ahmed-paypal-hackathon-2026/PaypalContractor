@@ -23,8 +23,27 @@ one **PayPal Payouts** batch.
 
 | Artifact | Link |
 | --- | --- |
-| Hosted application (Render, HTTPS) | `https://<service>.onrender.com` _(published at the Day 10 handoff — see [Deployment](#deployment-render))_ |
+| Hosted application (Render, HTTPS) | **<https://fd-web.onrender.com>** |
+| Backend API | <https://fd-api-6b8z.onrender.com> (`/api/v1/*`; health at [`/api/v1/health`](https://fd-api-6b8z.onrender.com/api/v1/health)) |
 | Demo video (< 2:50) | `https://youtu.be/<id>` _(published before the submission freeze)_ |
+
+### Demo key
+
+Every write in the app (upload a contract, simulate a payment, approve a remediation,
+send payroll) asks for the **demo key**, which is sent as an `X-Demo-Key` header.
+Reads need no key. The key is published on the Devpost submission and can also be
+verified locally with `curl`:
+
+```bash
+curl -X POST https://fd-api-6b8z.onrender.com/api/v1/simulator/pay \
+     -H "X-Demo-Key: <demo-key>" -H "Content-Type: application/json" \
+     -d '{"contract_id":"<id>","milestone_id":"<id>","amount":"1000.00","currency":"USD"}'
+```
+
+When deployed with the Render Blueprint, `DEMO_KEY` is auto-generated at first deploy
+(`generateValue: true` in `render.yaml`); it lives in the Render dashboard under
+**`fd-api` → Environment**. Setting it to any 24+ character value there and restarting
+the service changes the key for both the app and the API.
 
 ## Contents
 
@@ -399,9 +418,13 @@ Leash safety gates (no silent Deny, `409` on unresolved Ask, duplicate-batch rej
 ## Deployment (Render)
 
 The stack deploys from the declarative `render.yaml` Blueprint: `fd-api` (FastAPI +
-webhook listener), `fd-web` (static React build) and `fd-db` (database). The public
-HTTPS webhook endpoint (`https://fd-api.onrender.com/api/v1/webhooks/paypal`) is
-registered in the PayPal Developer Dashboard to obtain `PAYPAL_WEBHOOK_ID`.
+webhook listener), `fd-web` (static React build, mocks **off** — it talks to the live
+backend) and `fd-db` (PostgreSQL). `fd-api` reads `DEMO_KEY` (auto-generated) and the
+sandbox secrets from its Environment tab; `fd-web` gets `VITE_API_BASE_URL` and
+`VITE_USE_MOCKS=false` baked at build time. The public HTTPS webhook endpoint
+(`https://fd-api-6b8z.onrender.com/api/v1/webhooks/paypal`) is registered in the PayPal
+Developer Dashboard to obtain `PAYPAL_WEBHOOK_ID`. A deploy hook seeds the demo
+contract, ledger and Leash roster on first boot (`SEED_DEMO_DATA=true`).
 
 Six gates block recording and submission:
 
