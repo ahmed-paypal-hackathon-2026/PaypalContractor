@@ -116,7 +116,7 @@ async def extract_contract(
         "contract.extracted",
         extra={
             "contract": contract_id,
-            "filename": filename,
+            "source_filename": filename,
             "milestones": len(persisted),
         },
     )
